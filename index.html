@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>My Portfolio</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+ <div id="header">
+    <div class="container">
+        <nav>
+            <h1><span>T</span>haya</h1>
+            <ul>
+                <li><a href="#header">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contacts</a></li>
+            </ul>
+        </nav>
+        <div class="header-text">
+            <h2>Hi, I'm <span>Thayanithi</span></h2>
+            <p>Frontend Developer</p>
+            <a href="THAYANITHI.V.docx" download class="cv">Download <span>CV</span></a>
+        </div>
+    </div>
+ </div>
+ <div id="about">
+    <div class="container">
+        <div class="row">
+            <div class="about-col-1">
+                <img src="img/Camera.jpeg">
+            </div>
+            <div class="about-col-2">
+                <h1 class="subtitle">About Me</h1>
+                <p>A self driven person with 2 years of experience in Data Digitization, Webresearch, Data Conversion etc & knowledge in Microsoft Excel, Microsoft Powerpoint, HTML, CSS & JavaScript for Web desiging.</p>
+                <div class="tab-titles">
+                    <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                    <p class="tab-links" onclick="opentab('experiance')">Experience</p>
+                    <p class="tab-links" onclick="opentab('education')">Education</p>
+                    <p class="tab-links" onclick="opentab('certificate')">Certificate</p>
+                </div>
+                <div class="tab-contents active-tab" id="skills">
+                    <ul>
+                        <li><span>Web Devalopment</span><br>HTML<br>CSS<br>JAVASCRIPT</li>
+                        <li><span>Microsoft</span><br>Microsoft Excel<br>Microsoft Word<br>PowerPoint</li>
+                    </ul>
+                </div>
+                <div class="tab-contents" id="experiance">
+                    <h2>Process Associate | I-Cons Technologies</h2>
+                    <h5>Coimbatore | 2020 August – 2022 (Present)</h5>
+                    <ul>
+                        <li><span>Data Verification</span><br><p>Application called streetbees is mainly used to take the survey from clients which they mostly used product in pandemic situations.<br>Understand and track brand performance from consumers.<br>how consumers are engaging with media and entertainment, in and out of home, across all the platforms.</p></li>
+                        <li><span>Data Generation</span><br>Application called slintel we used to collect the information about the b2b marketing.<br>Analyzes factors such as buyer journeys, and technology adoption patterns.<br>And having access to collect customers buying patterns and contact information in all countries.</li>
+                    </ul>
+                </div>
+                <div class="tab-contents" id="education">
+                    <ul>
+                        <li><span>2014 - 2017</span><br>BSc.CHEMISTRY at Gobi Arts & Science College, Gobichettipalayam.</li>
+                        <li><span>2012 - 2014</span><br>HSC at Kumutha Matriculation Higher Secondary School, Nambiyur.</li>
+                        <li><span>2012</span><br>SSLC at Govt. Higher Secondary School, Savakkattupalayam.</li>
+                    </ul>
+                </div>
+                <div class="tab-contents" id="certificate">
+                    <ul>
+                        <li><span>2019</span><br>Junior Type Writing, Valarmathi Institute, Nambiyur.</li>
+                        <li><span>2021</span><br>Medical Coding and Training, Thought Flows Medical Coding Academy, Coimbatore.</li>
+                        <li><span>2022</span><br>Programming Foundations with JavaScript, HTML and CSS. Coursera.org.</li>
+                    </ul>
+                </div>
+            </div> 
+        </div>
+    </div>
+ </div>
+ <div id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="contact-left">
+                <h1 class="subtitle">Contact Me</h1>
+                <p><i class="fa fa-paper-plane"></i> thayanithi938@gmail.com<br><i class="fa fa-paper-plane"></i> thayamt15@gmail.com</p>
+                <p><i class="fa fa-phone-square"></i> 9543325825</p>
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/in/thayanithi-v-9b22a4143/" target="blank"><i class="fa fa-linkedin-square"></i></a>
+                </div>
+                <p class="address"><i class="fa fa-home"></i><b>Address </b><br>4/170, Nesavalar Colony<br> Savakkattupalayam<br> Tiruppur - 638 460.</p>
+            </div>
+            <div class="contact-right">
+                <form name="submit-to-google-sheet">
+                    <input type="text" name="Name" placeholder=" Name" required>
+                    <input type="email" name="Email" placeholder="Email" required>
+                    <textarea name="Message" rows="6" placeholder="Message"></textarea>
+                    <button type="submit" class="btn">Submit</button>
+                </form>
+                <span id="msg"></span>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>copyright © Thaya<i class="fa fa-heart"></i></p>
+    </div>
+ </div>
+<script>
+var tablinks=document.getElementsByClassName("tab-links");
+var tabcontents=document.getElementsByClassName("tab-contents");
+function opentab(tabname){
+    for(tablink of tablinks){
+        tablink.classList.remove("active-link");
+    }
+    for(tabcontent of tabcontents){
+        tabcontent.classList.remove("active-tab");
+    }
+    event.currentTarget.classList.add("active-link");
+    document.getElementById(tabname).classList.add("active-tab");
+}
+</script>
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxKbPI3puEhwsmTReipl7VOSVmdAtxpVfZ-oS1W4R9HhujdhSjSGRgH3LtQnCwdyBDXvQ/exec'
+    const form = document.forms['submit-to-google-sheet']
+    const msg = document.getElementById("msg")
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response =>{
+            msg.innerHTML = "Message sent successfully"
+            setTimeout(function(){
+                msg.innerHTML = ""
+            },5000)
+            form.reset()
+        })
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+</body>
+</html>
